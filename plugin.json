@@ -1,0 +1,26 @@
+{
+	"description" : "Scans the given device mount paths and reports the one with the least free space",
+	"icon" : "icon.png",
+	"command" : "node index.js $(pollInterval) $(devices)",
+	"postExtract" : "npm install",
+	"ignore" : "node_modules",
+	"metrics" : ["DISKUSE_SUMMARY_TEST"],
+	"paramSchema" : [
+		{
+			"title" : "Devices",
+			"description" : "The set of device mountings to check for free space. On Linux you use the mount path (ex. /). On Windows you use the drive letter (ex. C)",
+			"type" : "array",
+			"items" : {
+				"type" : "string"
+			}
+		},
+		{
+			"title" : "Poll Time",
+			"name" : "pollInterval",
+			"description" : "The Poll Interval to call your endpoint in seconds",
+			"type" : "integer",
+			"default" : 5000,
+			"required" : true
+		}
+	]
+}
